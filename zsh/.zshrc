@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
-plugins=(git)
+plugins=(git z)
 source $ZSH/oh-my-zsh.sh
 
 # zplug + Pure prompt
@@ -25,4 +25,13 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
 yt() { mpv --no-video "$1"; }
 
+# History
+HISTSIZE=100000
+SAVEHIST=100000
+setopt share_history
+setopt hist_ignore_all_dups
+
 export PATH="$HOME/.local/bin:$PATH"
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
