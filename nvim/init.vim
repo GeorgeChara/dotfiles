@@ -6,7 +6,15 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
-lua require('lualine').setup({ options = { theme = 'tokyonight' } })
+lua << EOF
+require('lualine').setup({
+  options = {
+    theme = 'tokyonight',
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+  }
+})
+EOF
 
 " -----------------------------------------------
 " NERDTree Basic Config (from community best practices)
