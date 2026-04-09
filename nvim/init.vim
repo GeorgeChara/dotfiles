@@ -2,7 +2,11 @@
 call plug#begin()
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'preservim/nerdtree'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
+
+lua require('lualine').setup({ options = { theme = 'tokyonight' } })
 
 " -----------------------------------------------
 " NERDTree Basic Config (from community best practices)
@@ -32,3 +36,4 @@ colorscheme tokyonight
 set nu rnu
 set scrolloff=10
 set cc=80
+
