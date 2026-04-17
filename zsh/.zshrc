@@ -24,6 +24,8 @@ alias z="zellij"
 alias vim="nvim"
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+alias news="clx"
+alias hackernews="clx"
 yt() { mpv --no-video "$1"; }
 
 # Notes
