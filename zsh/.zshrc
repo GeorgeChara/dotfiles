@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
-plugins=(git z)
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # zplug + Pure prompt
@@ -20,10 +20,15 @@ fi
 zplug load
 
 # Aliases
+alias z="zellij"
 alias vim="nvim"
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
 yt() { mpv --no-video "$1"; }
+
+# Notes
+alias notes="ls ~/notes/"
+alias inbox="nvim ~/notes/inbox.md"
 
 # History
 HISTSIZE=100000
