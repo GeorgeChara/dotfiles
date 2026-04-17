@@ -19,7 +19,6 @@ require('lualine').setup({
   },
   sections = {
     lualine_c = { 'filename' },
-    lualine_x = { function() return 'C-h: tree  \\x: close' end },
   },
 })
 
