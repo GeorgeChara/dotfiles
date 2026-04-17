@@ -169,6 +169,11 @@ keybinds clear-defaults=true {
         // Move pane (for rotating master/stack)
         bind "Alt [" { MovePane "Left"; }
         bind "Alt ]" { MovePane "Right"; }
+        // DWM-style directional pane move (Super+Shift+hjkl)
+        bind "Alt Shift h" { MovePane "Left"; }
+        bind "Alt Shift j" { MovePane "Down"; }
+        bind "Alt Shift k" { MovePane "Up"; }
+        bind "Alt Shift l" { MovePane "Right"; }
         // Tabs
         bind "Alt t" { NewTab; }
         bind "Alt 1" { GoToTab 1; }
