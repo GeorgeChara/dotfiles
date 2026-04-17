@@ -7,7 +7,7 @@ layout {
         pane size=1 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
                 format_left   "{mode} {tabs}"
-                format_center "#[fg=#7aa2f7]⌥hjkl#[fg=#565f89] focus  #[fg=#7aa2f7]⌥⇧hjkl#[fg=#565f89] move  #[fg=#7aa2f7]⌥↵#[fg=#565f89] new  #[fg=#7aa2f7]⌥q#[fg=#565f89] close  #[fg=#7aa2f7]⌥␣#[fg=#565f89] layout  #[fg=#7aa2f7]⌥g#[fg=#565f89] lock"
+                format_center "#[fg=#7aa2f7]⌥+hjkl#[fg=#565f89] focus  #[fg=#7aa2f7]⌥+⇧+hjkl#[fg=#565f89] move  #[fg=#7aa2f7]⌥+↵#[fg=#565f89] new  #[fg=#7aa2f7]⌥+q#[fg=#565f89] close  #[fg=#7aa2f7]⌥+␣#[fg=#565f89] layout  #[fg=#7aa2f7]⌥+g#[fg=#565f89] lock"
                 format_right  "{swap_layout} {datetime}"
                 format_space  ""
                 mode_normal   "#[fg=#7aa2f7,bold] NORMAL "
