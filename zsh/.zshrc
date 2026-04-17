@@ -27,8 +27,8 @@ alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
 yt() { mpv --no-video "$1"; }
 
 # Notes
-alias notes="ls ~/notes/"
-alias inbox="nvim ~/notes/inbox.md"
+alias notes="ls ~/Notes/"
+alias inbox="nvim ~/Notes/inbox.md"
 
 # History
 HISTSIZE=100000
