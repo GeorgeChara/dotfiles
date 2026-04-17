@@ -82,60 +82,6 @@ layout {
                 pane size="60%"
             }
         }
-        tab max_panes=6 {
-            pane split_direction="vertical" {
-                pane split_direction="horizontal" size="40%" {
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                }
-                pane size="60%"
-            }
-        }
-        tab max_panes=7 {
-            pane split_direction="vertical" {
-                pane split_direction="horizontal" size="40%" {
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                }
-                pane size="60%"
-            }
-        }
-        tab max_panes=8 {
-            pane split_direction="vertical" {
-                pane split_direction="horizontal" size="40%" {
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                }
-                pane size="60%"
-            }
-        }
-        tab min_panes=9 {
-            pane split_direction="vertical" {
-                pane split_direction="horizontal" size="40%" {
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                    pane
-                }
-                pane size="60%"
-            }
-        }
     }
 
 }
