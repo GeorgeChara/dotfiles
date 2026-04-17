@@ -1,0 +1,46 @@
+// Dev layout: terminal + claude (stack left) | vim (master right)
+//   ┌──────────────┐
+//   │   terminal   │  vim/NERDTree
+//   ├──────────────┤  (master 60%)
+//   │   claude     │
+//   └──────────────┘
+//   (stack 40%)
+
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode} {tabs}"
+                format_center ""
+                format_right  "{swap_layout} {datetime}"
+                format_space  ""
+                mode_normal   "#[fg=#7aa2f7,bold] NORMAL "
+                mode_locked   "#[fg=#f7768e,bold] LOCKED "
+                mode_tmux     "#[fg=#e0af68,bold] TMUX "
+                mode_default_to_mode "tmux"
+                tab_normal               "#[fg=#565f89] {name} "
+                tab_active               "#[fg=#7aa2f7,bold] {name} "
+                tab_fullscreen_indicator "□ "
+                tab_sync_indicator       " "
+                tab_floating_indicator   "⬚ "
+                swap_layout_format "#[fg=#444d6a] {name}"
+                datetime           "#[fg=#565f89] {format}"
+                datetime_format    "%H:%M"
+                datetime_timezone  "Europe/London"
+            }
+        }
+    }
+
+    tab name="dev" focus=true {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" size="40%" {
+                pane name="term"
+                pane name="claude" command="claude"
+            }
+            pane size="60%" name="vim" command="nvim" {
+                args "."
+            }
+        }
+    }
+}

@@ -1,0 +1,222 @@
+// DWM-style layout: stack left 40%, master right 60%
+// Alt+Space cycles: MASTER-STACK → COLUMNS → ROWS → GRID
+layout {
+    // Status bar at BOTTOM
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode} {tabs}"
+                format_center ""
+                format_right  "{swap_layout} {datetime}"
+                format_space  ""
+                mode_normal   "#[fg=#7aa2f7,bold] NORMAL "
+                mode_locked   "#[fg=#f7768e,bold] LOCKED "
+                mode_tmux     "#[fg=#e0af68,bold] TMUX "
+                mode_default_to_mode "tmux"
+                tab_normal               "#[fg=#565f89] {name} "
+                tab_active               "#[fg=#7aa2f7,bold] {name} "
+                tab_fullscreen_indicator "□ "
+                tab_sync_indicator       " "
+                tab_floating_indicator   "⬚ "
+                swap_layout_format "#[fg=#444d6a] {name}"
+                datetime           "#[fg=#565f89] {format}"
+                datetime_format    "%H:%M"
+                datetime_timezone  "Europe/London"
+            }
+        }
+    }
+
+    tab name="main" focus=true {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" size="40%" {
+                pane command="nvim" {
+                    args "."
+                }
+                pane command="zsh" {
+                    args "-c" "clx; exec zsh -li"
+                }
+            }
+            pane size="60%" command="claude"
+        }
+    }
+
+    // — Master-Stack (DWM tile) —
+    // Right master stays fixed, left side stacks VERTICALLY
+    swap_tiled_layout name="MASTER-STACK" {
+        tab max_panes=1 {
+            pane
+        }
+        tab max_panes=2 {
+            pane split_direction="vertical" {
+                pane size="40%"
+                pane size="60%"
+            }
+        }
+        tab max_panes=3 {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" size="40%" {
+                    pane
+                    pane
+                }
+                pane size="60%"
+            }
+        }
+        tab max_panes=4 {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" size="40%" {
+                    pane
+                    pane
+                    pane
+                }
+                pane size="60%"
+            }
+        }
+        tab max_panes=5 {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" size="40%" {
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+                pane size="60%"
+            }
+        }
+        tab max_panes=6 {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" size="40%" {
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+                pane size="60%"
+            }
+        }
+        tab max_panes=7 {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" size="40%" {
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+                pane size="60%"
+            }
+        }
+        tab max_panes=8 {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" size="40%" {
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+                pane size="60%"
+            }
+        }
+        tab min_panes=9 {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" size="40%" {
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+                pane size="60%"
+            }
+        }
+    }
+
+    // — Even Columns —
+    swap_tiled_layout name="COLUMNS" {
+        tab max_panes=1 {
+            pane
+        }
+        tab max_panes=2 {
+            pane split_direction="vertical" {
+                pane
+                pane
+            }
+        }
+        tab max_panes=3 {
+            pane split_direction="vertical" {
+                pane
+                pane
+                pane
+            }
+        }
+        tab max_panes=4 {
+            pane split_direction="vertical" {
+                pane
+                pane
+                pane
+                pane
+            }
+        }
+    }
+
+    // — Even Rows —
+    swap_tiled_layout name="ROWS" {
+        tab max_panes=1 {
+            pane
+        }
+        tab max_panes=2 {
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+        }
+        tab max_panes=3 {
+            pane split_direction="horizontal" {
+                pane
+                pane
+                pane
+            }
+        }
+        tab max_panes=4 {
+            pane split_direction="horizontal" {
+                pane
+                pane
+                pane
+                pane
+            }
+        }
+    }
+
+    // — Grid —
+    swap_tiled_layout name="GRID" {
+        tab max_panes=1 {
+            pane
+        }
+        tab max_panes=2 {
+            pane split_direction="vertical" {
+                pane
+                pane
+            }
+        }
+        tab max_panes=4 {
+            pane split_direction="horizontal" {
+                pane split_direction="vertical" {
+                    pane
+                    pane
+                }
+                pane split_direction="vertical" {
+                    pane
+                    pane
+                }
+            }
+        }
+    }
+}

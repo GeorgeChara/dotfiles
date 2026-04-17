@@ -1,0 +1,204 @@
+// Zellij config — DWM-style for HHKB + iTerm2
+theme "dwm-tokyonight"
+
+themes {
+    dwm-tokyonight {
+        frame_selected {
+            base 122 162 247
+            background 0
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 187 154 247
+            emphasis_3 0
+        }
+        frame_unselected {
+            base 84 92 126
+            background 0
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 187 154 247
+            emphasis_3 0
+        }
+        frame_highlight {
+            base 125 207 255
+            background 0
+            emphasis_0 187 154 247
+            emphasis_1 125 207 255
+            emphasis_2 125 207 255
+            emphasis_3 125 207 255
+        }
+        text_unselected {
+            base 169 177 214
+            background 26 27 38
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        text_selected {
+            base 169 177 214
+            background 41 46 66
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        ribbon_selected {
+            base 26 27 38
+            background 122 162 247
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        ribbon_unselected {
+            base 86 95 137
+            background 26 27 38
+            emphasis_0 247 118 142
+            emphasis_1 169 177 214
+            emphasis_2 169 177 214
+            emphasis_3 187 154 247
+        }
+        table_title {
+            base 122 162 247
+            background 0
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        table_cell_selected {
+            base 169 177 214
+            background 41 46 66
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        table_cell_unselected {
+            base 169 177 214
+            background 26 27 38
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        list_selected {
+            base 169 177 214
+            background 41 46 66
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        list_unselected {
+            base 169 177 214
+            background 26 27 38
+            emphasis_0 247 118 142
+            emphasis_1 125 207 255
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
+        }
+        exit_code_success {
+            base 122 162 247
+            background 0
+            emphasis_0 125 207 255
+            emphasis_1 26 27 38
+            emphasis_2 187 154 247
+            emphasis_3 61 89 161
+        }
+        exit_code_error {
+            base 247 118 142
+            background 0
+            emphasis_0 224 175 104
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 187 154 247
+            player_2 125 207 255
+            player_3 0
+            player_4 224 175 104
+            player_5 122 162 247
+            player_6 0
+            player_7 247 118 142
+            player_8 0
+            player_9 0
+            player_10 0 0
+        }
+    }
+}
+
+// Simplified UI
+default_layout "dwm"
+auto_layout true
+pane_frames true
+mouse_mode true
+mouse_hover_effects false
+simplified_ui true
+default_shell "zsh"
+
+// DWM-style keybindings (Alt/Option key as modifier)
+// Bindings that work in ALL modes except locked
+keybinds clear-defaults=true {
+    shared_except "locked" {
+        // Pane cycling
+        bind "Alt Tab" { FocusNextPane; }
+        bind "Alt Enter" { NewPane; }
+        // DWM-style focus (Super+j/k)
+        bind "Alt j" { FocusNextPane; }
+        bind "Alt k" { FocusPreviousPane; }
+        // Directional focus (DWM Super+h/l)
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        // New pane (DWM Super+Return)
+        bind "Alt n" { NewPane; }
+        // Close pane (DWM Super+Shift+c)
+        bind "Alt q" { CloseFocus; }
+        // Cycle layout (DWM layout switching)
+        bind "Alt Space" { NextSwapLayout; }
+        bind "Alt Shift Space" { PreviousSwapLayout; }
+        // Toggle floating pane
+        bind "Alt r" { ToggleFloatingPanes; }
+        // Toggle fullscreen pane
+        bind "Alt f" { ToggleFocusFullscreen; }
+        // Resize
+        bind "Alt =" { Resize "Increase"; }
+        bind "Alt -" { Resize "Decrease"; }
+        // Move pane (for rotating master/stack)
+        bind "Alt [" { MovePane "Left"; }
+        bind "Alt ]" { MovePane "Right"; }
+        // Tabs
+        bind "Alt t" { NewTab; }
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+        bind "Alt 3" { GoToTab 3; }
+        bind "Alt 4" { GoToTab 4; }
+        bind "Alt 5" { GoToTab 5; }
+        // Session
+        bind "Ctrl b" { SwitchToMode "Tmux"; }
+        // Enter locked mode (useful when in neovim)
+        bind "Alt g" { SwitchToMode "Locked"; }
+    }
+
+    // Tmux-compatible mode (ctrl-b prefix for muscle memory)
+    tmux {
+        bind "d" { Detach; }
+        bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "r" { SwitchToMode "Normal"; }
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
+        bind "Esc" { SwitchToMode "Normal"; }
+        bind "Ctrl b" { SwitchToMode "Normal"; }
+    }
+
+    // Normal mode — pass everything through
+    normal {
+    }
+
+    // Locked mode — pass ALL keys through (for neovim)
+    locked {
+        bind "Alt g" { SwitchToMode "Normal"; }
+    }
+}
