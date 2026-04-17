@@ -145,20 +145,18 @@ keybinds clear-defaults=true {
     shared_except "locked" {
         // Pane cycling
         bind "Alt Tab" { FocusNextPane; }
-        bind "Alt Enter" { NewPane; }
+        bind "Alt Enter" { NewPane "Down"; }
         // DWM-style focus (Super+j/k)
         bind "Alt j" { FocusNextPane; }
         bind "Alt k" { FocusPreviousPane; }
         // Directional focus (DWM Super+h/l)
         bind "Alt h" { MoveFocus "Left"; }
         bind "Alt l" { MoveFocus "Right"; }
-        // New pane (DWM Super+Return)
-        bind "Alt n" { NewPane; }
+        // New pane (DWM Super+Return) — always added to the bottom of the stack
+        bind "Alt n" { NewPane "Down"; }
         // Close pane (DWM Super+Shift+c)
         bind "Alt q" { CloseFocus; }
-        // Cycle layout (DWM layout switching)
-        bind "Alt Space" { NextSwapLayout; }
-        bind "Alt Shift Space" { PreviousSwapLayout; }
+        // Layout cycling removed — MASTER-STACK is the only layout
         // Toggle floating pane
         bind "Alt r" { ToggleFloatingPanes; }
         // Toggle fullscreen pane

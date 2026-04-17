@@ -1,5 +1,4 @@
-// DWM-style layout: stack left 40%, master right 60%
-// Alt+Space cycles: MASTER-STACK → COLUMNS → ROWS → GRID
+// DWM master-stack: stack left 40%, master right 60% — no cycling.
 layout {
     // Status bar at BOTTOM
     default_tab_template {
@@ -7,7 +6,7 @@ layout {
         pane size=1 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
                 format_left   "{mode} {tabs}"
-                format_center "#[fg=#7aa2f7]⌥+hjkl#[fg=#565f89] focus  #[fg=#7aa2f7]⌥+⇧+hjkl#[fg=#565f89] move  #[fg=#7aa2f7]⌥+↵#[fg=#565f89] new  #[fg=#7aa2f7]⌥+q#[fg=#565f89] close  #[fg=#7aa2f7]⌥+␣#[fg=#565f89] layout  #[fg=#7aa2f7]⌥+g#[fg=#565f89] lock"
+                format_center "#[fg=#7aa2f7]⌥+hjkl#[fg=#565f89] focus  #[fg=#7aa2f7]⌥+⇧+hjkl#[fg=#565f89] move  #[fg=#7aa2f7]⌥+↵#[fg=#565f89] new  #[fg=#7aa2f7]⌥+q#[fg=#565f89] close  #[fg=#7aa2f7]⌥+g#[fg=#565f89] lock"
                 format_right  "{swap_layout} {datetime}"
                 format_space  ""
                 mode_normal   "#[fg=#7aa2f7,bold] NORMAL "
@@ -139,84 +138,4 @@ layout {
         }
     }
 
-    // — Even Columns —
-    swap_tiled_layout name="COLUMNS" {
-        tab max_panes=1 {
-            pane
-        }
-        tab max_panes=2 {
-            pane split_direction="vertical" {
-                pane
-                pane
-            }
-        }
-        tab max_panes=3 {
-            pane split_direction="vertical" {
-                pane
-                pane
-                pane
-            }
-        }
-        tab max_panes=4 {
-            pane split_direction="vertical" {
-                pane
-                pane
-                pane
-                pane
-            }
-        }
-    }
-
-    // — Even Rows —
-    swap_tiled_layout name="ROWS" {
-        tab max_panes=1 {
-            pane
-        }
-        tab max_panes=2 {
-            pane split_direction="horizontal" {
-                pane
-                pane
-            }
-        }
-        tab max_panes=3 {
-            pane split_direction="horizontal" {
-                pane
-                pane
-                pane
-            }
-        }
-        tab max_panes=4 {
-            pane split_direction="horizontal" {
-                pane
-                pane
-                pane
-                pane
-            }
-        }
-    }
-
-    // — Grid —
-    swap_tiled_layout name="GRID" {
-        tab max_panes=1 {
-            pane
-        }
-        tab max_panes=2 {
-            pane split_direction="vertical" {
-                pane
-                pane
-            }
-        }
-        tab max_panes=4 {
-            pane split_direction="horizontal" {
-                pane split_direction="vertical" {
-                    pane
-                    pane
-                }
-                pane split_direction="vertical" {
-                    pane
-                    pane
-                }
-            }
-        }
-    }
 }
