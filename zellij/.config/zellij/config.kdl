@@ -145,16 +145,17 @@ keybinds clear-defaults=true {
     shared_except "locked" {
         // Pane cycling
         bind "Alt Tab" { FocusNextPane; }
-        bind "Alt Enter" { MoveFocus "Left"; NewPane "Down"; }
+        bind "Alt Enter" { MoveFocus "Left"; MoveFocus "Down"; MoveFocus "Down"; MoveFocus "Down"; MoveFocus "Down"; NewPane "Down"; }
         // DWM-style focus (Super+j/k)
         bind "Alt j" { FocusNextPane; }
         bind "Alt k" { FocusPreviousPane; }
         // Directional focus (DWM Super+h/l)
         bind "Alt h" { MoveFocus "Left"; }
         bind "Alt l" { MoveFocus "Right"; }
-        // New pane (DWM Super+Return) — always forces focus to the left stack first,
-        // then splits downward, so the new pane lands in the stack (not under master).
-        bind "Alt n" { MoveFocus "Left"; NewPane "Down"; }
+        // New pane (DWM Super+Return) — snap focus to the bottom of the left stack
+        // (Left then Down×4, which no-ops once at the edge), then split downward so
+        // the new pane lands at the very bottom of the stack regardless of prior focus.
+        bind "Alt n" { MoveFocus "Left"; MoveFocus "Down"; MoveFocus "Down"; MoveFocus "Down"; MoveFocus "Down"; NewPane "Down"; }
         // Close pane (DWM Super+Shift+c)
         bind "Alt q" { CloseFocus; }
         // Layout cycling removed — MASTER-STACK is the only layout
