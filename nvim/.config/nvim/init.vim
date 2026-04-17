@@ -2,6 +2,10 @@
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 
+" Leader (must be set before any <leader> mappings)
+let mapleader = " "
+let maplocalleader = " "
+
 " Encoding
 set encoding=UTF-8
 
@@ -11,6 +15,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+Plug 'moll/vim-bbye'
 call plug#end()
 
 lua << EOF
@@ -116,4 +121,4 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 " Buffer navigation (VS Code-style tabs)
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
-nnoremap <leader>x :bdelete<CR>
+nnoremap <leader>x :Bdelete<CR>
