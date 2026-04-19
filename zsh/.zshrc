@@ -32,6 +32,17 @@ yt() { mpv --no-video "$1"; }
 alias notes="ls ~/Notes/"
 alias inbox="nvim ~/Notes/inbox.md"
 
+# Preview markdown with glow instead of cat / less. `vim` still handles editing.
+#   md foo.md          # render foo.md in pager
+#   md *.md            # render multiple
+md() {
+    if [[ $# -eq 0 ]]; then
+        echo "usage: md <file.md> [more.md ...]" >&2
+        return 1
+    fi
+    glow -p "$@"
+}
+
 # History
 HISTSIZE=100000
 SAVEHIST=100000
