@@ -33,11 +33,12 @@ alias notes="ls ~/Notes/"
 alias inbox="nvim ~/Notes/inbox.md"
 
 # Preview markdown with glow instead of cat / less. `vim` still handles editing.
-#   md foo.md          # render foo.md in pager
-#   md *.md            # render multiple
-md() {
+# Named `mdview` to avoid clashing with oh-my-zsh's `md` alias (mkdir -p).
+#   mdview foo.md          # render foo.md in pager
+#   mdview *.md            # render multiple
+mdview() {
     if [[ $# -eq 0 ]]; then
-        echo "usage: md <file.md> [more.md ...]" >&2
+        echo "usage: mdview <file.md> [more.md ...]" >&2
         return 1
     fi
     glow -p "$@"
