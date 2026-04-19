@@ -1,0 +1,33 @@
+#!/bin/bash
+# Wrapper for iTerm2 Semantic History (Cmd+click on a file path).
+# - Markdown files: open in a fresh iTerm2 window with `glow`
+# - Everything else: hand off to macOS `open` (default app)
+#
+# Configure iTerm2:
+#   Preferences → Profiles → Advanced → Semantic History
+#   Action: "Run command..."
+#   Command: /Users/george/.local/bin/cc-open-path \5
+#   (\5 is the full absolute file path iTerm2 substitutes.)
+
+path="$1"
+if [ -z "$path" ]; then
+  echo "usage: cc-open-path <file>" >&2
+  exit 1
+fi
+
+lower=$(printf '%s' "$path" | tr '[:upper:]' '[:lower:]')
+
+case "$lower" in
+  *.md|*.markdown)
+    # Escape single quotes for AppleScript string interpolation.
+    esc=$(printf '%s' "$path" | sed "s/'/'\\\\''/g")
+    /usr/bin/osascript <<APPLESCRIPT
+tell application "iTerm"
+  create window with default profile command "/opt/homebrew/bin/glow -p '$esc'"
+end tell
+APPLESCRIPT
+    ;;
+  *)
+    /usr/bin/open "$path"
+    ;;
+esac
