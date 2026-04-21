@@ -170,10 +170,13 @@ keybinds clear-defaults=true {
         bind "Alt [" { MovePane "Left"; }
         bind "Alt ]" { MovePane "Right"; }
         // DWM-style directional pane move (Super+Shift+hjkl)
-        bind "Alt Shift h" { MovePane "Left"; }
-        bind "Alt Shift j" { MovePane "Down"; }
-        bind "Alt Shift k" { MovePane "Up"; }
-        bind "Alt Shift l" { MovePane "Right"; }
+        // On macOS iTerm2 with "Option Key Sends = Esc+", Option+Shift+h
+        // sends "Esc H" — zellij sees that as `Alt H` not `Alt Shift h`.
+        // Bind both forms so it works regardless of terminal encoding.
+        bind "Alt Shift h" "Alt H" { MovePane "Left"; }
+        bind "Alt Shift j" "Alt J" { MovePane "Down"; }
+        bind "Alt Shift k" "Alt K" { MovePane "Up"; }
+        bind "Alt Shift l" "Alt L" { MovePane "Right"; }
         // Tabs
         bind "Alt t" { NewTab; }
         bind "Alt 1" { GoToTab 1; }
