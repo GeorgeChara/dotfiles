@@ -169,15 +169,16 @@ keybinds clear-defaults=true {
         // Move pane (for rotating master/stack)
         bind "Alt [" { MovePane "Left"; }
         bind "Alt ]" { MovePane "Right"; }
-        // DWM-style directional pane move (Super+Shift+hjkl)
-        // Requires iTerm2 to have "Report modifiers using CSI u" enabled
-        // (Profiles → Keys → General). Without CSI u, iTerm2 collapses
-        // Shift into letter case (sends `Esc H` instead of Alt+Shift+h),
-        // and zellij's `Alt Shift h` binding never matches.
-        bind "Alt Shift h" { MovePane "Left"; }
-        bind "Alt Shift j" { MovePane "Down"; }
-        bind "Alt Shift k" { MovePane "Up"; }
-        bind "Alt Shift l" { MovePane "Right"; }
+        // Directional pane MOVE — Ctrl+Alt+hjkl.
+        // Alt+Shift+hjkl would mirror DWM convention but iTerm2's Esc+
+        // mode collapses Shift into letter case before zellij sees it,
+        // so Alt Shift h never matches. Ctrl+Alt sidesteps that cleanly
+        // and avoids the backspace/newline/kill-line collisions that
+        // plain Ctrl+hjkl would cause with shells and editors.
+        bind "Ctrl Alt h" { MovePane "Left"; }
+        bind "Ctrl Alt j" { MovePane "Down"; }
+        bind "Ctrl Alt k" { MovePane "Up"; }
+        bind "Ctrl Alt l" { MovePane "Right"; }
         // Tabs
         bind "Alt t" { NewTab; }
         bind "Alt 1" { GoToTab 1; }
