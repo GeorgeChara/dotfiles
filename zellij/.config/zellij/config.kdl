@@ -170,17 +170,14 @@ keybinds clear-defaults=true {
         bind "Alt [" { MovePane "Left"; }
         bind "Alt ]" { MovePane "Right"; }
         // DWM-style directional pane move (Super+Shift+hjkl)
-        // On macOS iTerm2 with "Option Key Sends = Esc+", Option+Shift+H
-        // arrives as `Esc H` — zellij sees that as Alt+H (capital), not
-        // Alt+Shift+h. Bind both explicitly as separate statements.
+        // Requires iTerm2 to have "Report modifiers using CSI u" enabled
+        // (Profiles → Keys → General). Without CSI u, iTerm2 collapses
+        // Shift into letter case (sends `Esc H` instead of Alt+Shift+h),
+        // and zellij's `Alt Shift h` binding never matches.
         bind "Alt Shift h" { MovePane "Left"; }
-        bind "Alt H"       { MovePane "Left"; }
         bind "Alt Shift j" { MovePane "Down"; }
-        bind "Alt J"       { MovePane "Down"; }
         bind "Alt Shift k" { MovePane "Up"; }
-        bind "Alt K"       { MovePane "Up"; }
         bind "Alt Shift l" { MovePane "Right"; }
-        bind "Alt L"       { MovePane "Right"; }
         // Tabs
         bind "Alt t" { NewTab; }
         bind "Alt 1" { GoToTab 1; }
